@@ -57,3 +57,18 @@ This project simplifies product management while ensuring a modern and visually 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/AungSannOoDe/Product-react-Card.git
+### Usage  
+2. Navigate to the project directory:
+    ```bash
+       cd Product-react-Card
+ 3. Install the dependencies:
+    ```bash
+       bun install
+  4. Run the project with:
+     ```bash
+        bun run dev
+  ### Testing
+ 5. Product-react-card uses the {<strong>test_framework</strong>} test framework. Run the test suite with:
+      ```bash
+           bun run test
+                   
