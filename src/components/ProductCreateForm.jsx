@@ -1,12 +1,16 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import 'animate.css';
-import { storeProduct } from '../services/Product';
+import { ProductApi, storeProduct } from '../services/Product';
 import toast from 'react-hot-toast';
-const ProductCreateForm = ({setProducts,products}) => {
-    const Process=(setProducts,products,data)=>{
+import { useSWRConfig } from 'swr';
+const ProductCreateForm = () => {
+  const{mutate}=useSWRConfig()
+    const Process=(data)=>{
         toast.success(`${data.name} is added successfully`) 
-        setProducts([...products,data])
+        // setProducts([...products,data])
+        reset()
+        mutate(ProductApi)
     }
         const NotNumbers=(value)=>{
         if(/\d/.test(value)){
@@ -19,7 +23,7 @@ const ProductCreateForm = ({setProducts,products}) => {
     try{
         const res= await storeProduct(value)
         const data=await res.json()
-        res.ok ? Process(setProducts,products,data) :toast.error("Some thing wrong...")
+        res.ok ? Process(data) :toast.error("Some thing wrong...")
         reset()
           
     }
